@@ -19,8 +19,6 @@ LD=i386-elf-ld
 #
 all: ready bootloader kernel
 	cat $(BIN)/bootloader.bin $(BIN)/kernel.bin $(BIN)/kz.bin > $(BIN)/Turbocharge.img
-	rm -frv $(BIN)/*.o
-	rm -frv $(BIN)/*.bin
 
 #
 # Bootloader

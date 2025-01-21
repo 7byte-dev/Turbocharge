@@ -85,6 +85,11 @@ ProtectedModeBoot:
 
     mov ebp, 0x90000
     mov esp, ebp
+
+    mov al, 'A'
+    mov ah, 0xF
+    mov [0xb8000], ax
+
     jmp Q32Loc
 
 times 510-($-$$) db 0
