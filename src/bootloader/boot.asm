@@ -88,7 +88,7 @@ ProtectedModeBoot:
 
     mov al, 'A'
     mov ah, 0xF
-    mov [0xb8000], ax
+   ; mov [0xb8000], ax
 
     jmp Q32Loc
 
