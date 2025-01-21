@@ -39,7 +39,7 @@ $(BIN)/Quasar32.bin: $(KERNDIR)/*
 	$(GCC) -ffreestanding -m32 -g -c $(KERNDIR)/Quasar32.c -o $(BIN)/Q32Main.o
 	$(ASM) -f elf -o $(BIN)/kenter.o $(KERNDIR)/kern_enter.asm
 	$(ASM) -f bin -o $(BIN)/kz.bin $(KERNDIR)/kern_z.asm
-	$(LD) -Ttext 0x100000 "$(BIN)/kenter.o" "$(BIN)/Q32Main.o" -o "$(BIN)/kernel.bin" --oformat binary
+	$(LD) -T linker.ld "$(BIN)/kenter.o" "$(BIN)/Q32Main.o" -o "$(BIN)/kernel.bin" --oformat binary
 
 #
 # Ready

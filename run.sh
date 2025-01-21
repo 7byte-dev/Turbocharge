@@ -1,1 +1,1 @@
-qemu-system-x86_64 -drive format=raw,file=bin/Turbocharge.img,if=ide,index=0, -m 128
+qemu-system-x86_64 -drive format=raw,file=bin/Turbocharge.img,if=ide,index=0, -m 128M
