@@ -1,9 +1,0 @@
-# binary files
-bin/
-
-# memory dumps
-dmp*
-dump*
-dump/
-*/dmp*
-*/dump*
