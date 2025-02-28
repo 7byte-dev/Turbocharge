@@ -7,9 +7,9 @@ AR=i386-elf-ar
 #
 # Compile
 #
-$CC -ffreestanding -m32 -c -I../libraries dummy.c -o dummy.o
-$CC -ffreestanding -m32 -c -I../libraries io.c -o io.o
-$CC -ffreestanding -m32 -c -I../libraries keyboard.c -o keyboard.o
+$CC -ffreestanding -m32 -c -Ilibraries dummy.c -o dummy.o
+$CC -ffreestanding -m32 -c -Ilibraries io.c -o io.o
+$CC -ffreestanding -m32 -c -Ilibraries keyboard.c -o keyboard.o
 
 #
 # Archive
