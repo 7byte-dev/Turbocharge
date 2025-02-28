@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": [
+      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "-c",
+      "-o",
+      "drivers/dummy.o",
+      "drivers/dummy.c"
+    ],
+    "directory": "/home/username-here/git/Turbocharge",
+    "file": "/home/username-here/git/Turbocharge/drivers/dummy.c",
+    "output": "/home/username-here/git/Turbocharge/drivers/dummy.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "bin/kmain.o",
+      "kernel/kernel.c"
+    ],
+    "directory": "/home/username-here/git/Turbocharge",
+    "file": "/home/username-here/git/Turbocharge/kernel/kernel.c",
+    "output": "/home/username-here/git/Turbocharge/bin/kmain.o"
+  }
+]
