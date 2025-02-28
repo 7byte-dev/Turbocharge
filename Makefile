@@ -35,14 +35,14 @@ drivers: $(DRIVERS)/*
 kernel: $(BIN)/k.bin
 
 $(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/kmain.o
-	$(LD) -o $(BIN)/k.bin -Ttext 0x1000 $(BIN)/kenter.o $(BIN)/kmain.o $(DRIVERS)/libdrivers.a --oformat binary
+	$(LD) -o $(BIN)/k.bin -T kernel.ld $(BIN)/kenter.o $(BIN)/kmain.o $(DRIVERS)/libdrivers.a --oformat binary
 	truncate -s 16K $(BIN)/k.bin
 
 $(BIN)/kenter.o: $(KERNEL)/kenter.asm
 	$(ASM) -f elf -o $(BIN)/kenter.o $(KERNEL)/kenter.asm
 
 $(BIN)/kmain.o: $(KERNEL)/kernel.c
-	$(CC) -ffreestanding -m32 -g -c $(KERNEL)/kernel.c -o $(BIN)/kmain.o
+	$(CC) -ffreestanding -m32 -g -c -Ilibraries $(KERNEL)/kernel.c -o $(BIN)/kmain.o
 
 #
 # Clean
