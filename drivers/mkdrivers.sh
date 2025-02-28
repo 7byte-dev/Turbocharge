@@ -7,9 +7,9 @@ AR=i386-elf-ar
 #
 # Compile
 #
-$CC -ffreestanding -m32 -c test.c -o test.o
+$CC -ffreestanding -m32 -c dummy.c -o dummy.o
 
 #
 # Archive
 #
-$AR rcs libdrivers.a test.o
+$AR rcs libdrivers.a dummy.o
