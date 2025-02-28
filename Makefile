@@ -26,7 +26,7 @@ $(BIN)/boot.bin: $(BOOTLDR)/boot.asm
 #
 # Drivers
 #
-drivers:
+drivers: $(DRIVERS)/*
 	cd $(DRIVERS) && sh mkdrivers.sh
 
 #
@@ -35,7 +35,7 @@ drivers:
 kernel: $(BIN)/k.bin
 
 $(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/kmain.o
-	$(LD) -o $(BIN)/k.bin -Ttext 0x1000 $(BIN)/kenter.o $(BIN)/kmain.o $(DRIVERS)/ --oformat binary
+	$(LD) -o $(BIN)/k.bin -Ttext 0x1000 $(BIN)/kenter.o $(BIN)/kmain.o $(DRIVERS)/libdrivers.a --oformat binary
 	truncate -s 16K $(BIN)/k.bin
 
 $(BIN)/kenter.o: $(KERNEL)/kenter.asm
