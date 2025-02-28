@@ -1,6 +1,7 @@
-extern void putc(char);
+#include "text.h"
 
 extern void main(){
-    putc('B');
+    putc(0xF, 'A');
+    putc(0xF, 'B');
     return;
 }
