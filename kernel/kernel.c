@@ -1,7 +1,12 @@
-#include "text.h"
+#include "drivers.h"
+#include <text.h>
+#include <basic.h>
 
 extern void main(){
-    putc(0xF, 'A');
-    putc(0xF, 'B');
+    while (1) {
+        u8 kbIn = ReadKBInput();
+        putc(0xF, kbIn, 40, 8);
+    }
+
     return;
 }

@@ -2,12 +2,15 @@
   {
     "arguments": [
       "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
       "-c",
+      "-I../libraries",
       "-o",
-      "drivers/dummy.o",
-      "drivers/dummy.c"
+      "dummy.o",
+      "dummy.c"
     ],
-    "directory": "/home/username-here/git/Turbocharge",
+    "directory": "/home/username-here/git/Turbocharge/drivers",
     "file": "/home/username-here/git/Turbocharge/drivers/dummy.c",
     "output": "/home/username-here/git/Turbocharge/drivers/dummy.o"
   },
