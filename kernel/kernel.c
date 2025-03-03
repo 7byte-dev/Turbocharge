@@ -4,8 +4,8 @@
 
 extern void main(){
     while (1) {
-        u8 kbIn = ReadKBInput();
-        putc(0xF, kbIn, 40, 8);
+        u8 kbIn = TranslateFromScancode(ReadKBInput());
+        putc(0xC, kbIn, 40, 8);
     }
 
     return;
