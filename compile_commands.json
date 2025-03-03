@@ -5,7 +5,7 @@
       "-ffreestanding",
       "-m32",
       "-c",
-      "-I../libraries",
+      "-Ilibraries",
       "-o",
       "dummy.o",
       "dummy.c"
@@ -13,6 +13,36 @@
     "directory": "/home/username-here/git/Turbocharge/drivers",
     "file": "/home/username-here/git/Turbocharge/drivers/dummy.c",
     "output": "/home/username-here/git/Turbocharge/drivers/dummy.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "io.o",
+      "io.c"
+    ],
+    "directory": "/home/username-here/git/Turbocharge/drivers",
+    "file": "/home/username-here/git/Turbocharge/drivers/io.c",
+    "output": "/home/username-here/git/Turbocharge/drivers/io.o"
+  },
+  {
+    "arguments": [
+      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "keyboard.o",
+      "keyboard.c"
+    ],
+    "directory": "/home/username-here/git/Turbocharge/drivers",
+    "file": "/home/username-here/git/Turbocharge/drivers/keyboard.c",
+    "output": "/home/username-here/git/Turbocharge/drivers/keyboard.o"
   },
   {
     "arguments": [

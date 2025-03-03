@@ -13,5 +13,6 @@ extern inline u32 inl(u16);
 
 /* keyboard.c */
 extern u8 ReadKBInput();
+extern char TranslateFromScancode(u8);
 
 #endif
