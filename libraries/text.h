@@ -12,17 +12,19 @@
 
 /* Functions */
 void putc(u8, char, u8, u8);
-// void puts(u8, char*);
+void puts(u8, char*);
 
 void putc(u8 attrs, char _char, u8 x, u8 y) {
     *(u32*)(CGA_ADDR + x + y * CGA_WIDTH) = (attrs << 8) | _char;
 }
 
-/*
+
 void puts(u8 attrs, char * str) {
-    while (*str) {
-        putc(attrs, *str++);
+    u64 xpos = 0;
+    while (str[xpos]) {
+        putc(attrs, str[xpos], xpos, 0);
+        xpos++;
     }
 }
-*/
+
 #endif

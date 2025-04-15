@@ -47,8 +47,11 @@ static KBScancode CharacterCodes[] = {   // scancode defenitions for english alp
 };
 
 extern u8 ReadKBInput() {
-    while (!inb(0x64) & 1) {;}
-    return inb(0x60);
+    if (inb(0x64) & 0x01) {
+        return inb(0x60);
+    } else {
+        return -1;
+    }
 }
 
 extern char TranslateFromScancode(u8 scancode) {
@@ -59,4 +62,10 @@ extern char TranslateFromScancode(u8 scancode) {
     }
 
     return scancode;
+}
+
+extern void ClearKBBuffer() {
+    while (inb(0x64) & 0x01) {
+        inb(0x60);
+    }
 }

@@ -1,7 +1,7 @@
 [
   {
     "arguments": [
-      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
       "-ffreestanding",
       "-m32",
       "-c",
@@ -10,13 +10,13 @@
       "dummy.o",
       "dummy.c"
     ],
-    "directory": "/home/username-here/git/Turbocharge/drivers",
-    "file": "/home/username-here/git/Turbocharge/drivers/dummy.c",
-    "output": "/home/username-here/git/Turbocharge/drivers/dummy.o"
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.o"
   },
   {
     "arguments": [
-      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
       "-ffreestanding",
       "-m32",
       "-c",
@@ -25,13 +25,13 @@
       "io.o",
       "io.c"
     ],
-    "directory": "/home/username-here/git/Turbocharge/drivers",
-    "file": "/home/username-here/git/Turbocharge/drivers/io.c",
-    "output": "/home/username-here/git/Turbocharge/drivers/io.o"
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.o"
   },
   {
     "arguments": [
-      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
       "-ffreestanding",
       "-m32",
       "-c",
@@ -40,13 +40,13 @@
       "keyboard.o",
       "keyboard.c"
     ],
-    "directory": "/home/username-here/git/Turbocharge/drivers",
-    "file": "/home/username-here/git/Turbocharge/drivers/keyboard.c",
-    "output": "/home/username-here/git/Turbocharge/drivers/keyboard.o"
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.o"
   },
   {
     "arguments": [
-      "/usr/local/i386elfgcc/bin/i386-elf-gcc",
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
       "-ffreestanding",
       "-m32",
       "-g",
@@ -56,8 +56,8 @@
       "bin/kmain.o",
       "kernel/kernel.c"
     ],
-    "directory": "/home/username-here/git/Turbocharge",
-    "file": "/home/username-here/git/Turbocharge/kernel/kernel.c",
-    "output": "/home/username-here/git/Turbocharge/bin/kmain.o"
+    "directory": "/home/byte/Turbocharge OS/Turbocharge",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/kernel/kernel.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/bin/kmain.o"
   }
 ]
