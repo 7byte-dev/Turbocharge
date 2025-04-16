@@ -42,7 +42,7 @@ $(BIN)/kenter.o: $(KERNEL)/kenter.asm
 	$(ASM) -f elf -o $(BIN)/kenter.o $(KERNEL)/kenter.asm
 
 $(BIN)/kmain.o: $(KERNEL)/kernel.c
-	$(CC) -ffreestanding -m32 -g -c -Ilibraries $(KERNEL)/kernel.c -o $(BIN)/kmain.o
+	$(CC) -ffreestanding -m32 -g -c -Ilibraries -Idrivers $(KERNEL)/kernel.c -o $(BIN)/kmain.o
 
 #
 # Clean

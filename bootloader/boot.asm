@@ -24,7 +24,7 @@ int 0x13
 
                                     
 mov ah, 0x0
-mov al, 0x3
+mov al, 0x13
 int 0x10                
 
 

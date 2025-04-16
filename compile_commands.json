@@ -49,9 +49,25 @@
       "/home/byte/opt/cross/bin/i386-elf-gcc",
       "-ffreestanding",
       "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "graphics.o",
+      "graphics.c"
+    ],
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
       "-g",
       "-c",
       "-Ilibraries",
+      "-Idrivers",
       "-o",
       "bin/kmain.o",
       "kernel/kernel.c"
