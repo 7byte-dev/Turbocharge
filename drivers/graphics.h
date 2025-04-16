@@ -1,7 +1,7 @@
 #ifndef __KTEXT_H
 #define __KTEXT_H
 
-#include "basic.h"
+#include <basic.h>
 
 #define SCR_WIDTH 320
 #define SCR_HEIGHT 200
