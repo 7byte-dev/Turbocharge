@@ -39,3 +39,15 @@ void strcpy(char * dest, char * src) {
 
     *didx = '\0';
 }
+
+u8 streq(const char * a, const char * b) {
+    while (*a && *b) {
+        if (*a != *b) {
+            return 0;
+        }
+        ++a;
+        ++b;
+    }
+
+    return *a == *b;
+}

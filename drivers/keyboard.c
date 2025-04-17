@@ -39,6 +39,7 @@ static KBScancode CharacterCodes[] = {   // scancode defenitions for english alp
     {0x08, '7'},
     {0x09, '8'},
     {0x0A, '9'},
+    {0x39, ' '},
 };
 
 extern u8 ReadKBInput() {
@@ -50,7 +51,7 @@ extern u8 ReadKBInput() {
 }
 
 extern char TranslateFromScancode(u8 scancode) {
-    for (int i=0;i <= 34;++i) {
+    for (int i=0;i <= 35;++i) {
         if (CharacterCodes[i].make == scancode) {
             return CharacterCodes[i].translation;
         }

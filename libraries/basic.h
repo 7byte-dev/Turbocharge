@@ -33,5 +33,7 @@ void kfreemem(void*);
 
 /* Basic String Manipulation */
 void strcpy(char*,char*);
+u8 streq(const char*,const char*);
+//void strtkn(char**,char*);
 
 #endif
