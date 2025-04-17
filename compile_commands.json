@@ -2,13 +2,78 @@
   {
     "arguments": [
       "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
       "-c",
+      "-Ilibraries",
       "-o",
-      "drivers/graphics.o",
-      "drivers/graphics.c"
+      "dummy.o",
+      "dummy.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge",
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "io.o",
+      "io.c"
+    ],
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "keyboard.o",
+      "keyboard.c"
+    ],
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "graphics.o",
+      "graphics.c"
+    ],
+    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
     "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.c",
     "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-Idrivers",
+      "-o",
+      "bin/kmain.o",
+      "kernel/kernel.c"
+    ],
+    "directory": "/home/byte/Turbocharge OS/Turbocharge",
+    "file": "/home/byte/Turbocharge OS/Turbocharge/kernel/kernel.c",
+    "output": "/home/byte/Turbocharge OS/Turbocharge/bin/kmain.o"
   }
 ]

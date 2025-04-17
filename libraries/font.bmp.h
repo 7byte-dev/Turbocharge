@@ -4,7 +4,7 @@
 #include "basic.h"
 #include "drivers.h"
 
-void DrawChar(u8, u8*, u32, u32, u32);
+void DrawChar(u8, u8, u32, u32, u32);
 void DrawStrn(u8, u8*, u32, u32, u32, f64);
 
 static u8 __fontbmp_A[] = {
@@ -293,6 +293,17 @@ static u8 __fontbmp_Z[] = {
     0b11111111,
 };
 
+static u8 __fontbmp_space[] = {
+    0b00000000,
+    0b00000000,
+    0b00000000,
+    0b00000000,
+    0b00000000,
+    0b00000000,
+    0b00000000,
+    0b00000000,
+};
+
 u8 *FontBmps[] = {
     ['A'] = __fontbmp_A,
     ['B'] = __fontbmp_B,
@@ -320,15 +331,20 @@ u8 *FontBmps[] = {
     ['X'] = __fontbmp_X,
     ['Y'] = __fontbmp_Y,
     ['Z'] = __fontbmp_Z,
+    [' '] = __fontbmp_space,
 };
 
-void DrawChar(u8 color, u8* _char, u32 x, u32 y, u32 size) {
-    for (u32 i = 0; i < 8; i++) {
-        for (u32 j = 0;j < 8;j++) {
-            if (_char[i] >> (7 - j) & 1) {
-                u32 xpos = x + j * size;
-                if (!(xpos > SCR_WIDTH))
-                    DrawRect(color, xpos, y + i * size, size, size);
+void DrawChar(u8 color, u8 _char, u32 x, u32 y, u32 size) {
+    u8* bitmap = FontBmps[_char];
+
+    if (bitmap != NULL) {
+        for (u32 i = 0; i < 8; i++) {
+            for (u32 j = 0;j < 8;j++) {
+                if (FontBmps[_char][i] >> (7 - j) & 1) {
+                    u32 xpos = x + j * size;
+                    if (!(xpos > SCR_WIDTH))
+                        DrawRect(color, xpos, y + i * size, size, size);
+                }
             }
         }
     }
@@ -339,7 +355,7 @@ void DrawStrn(u8 color, u8 * strn, u32 x, u32 y, u32 font_size, f64 font_spacing
 
     while (strn[charptr] != '\0') {
         u32 xpos = (u32)(x + charptr * 8 * font_size * font_spacing);
-        DrawChar(color, FontBmps[strn[charptr++]], xpos, 2 + y, font_size);
+        DrawChar(color, strn[charptr++], xpos, 2 + y, font_size);
     }
 }
 

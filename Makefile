@@ -56,5 +56,5 @@ clean:
 #
 ready:
 	mkdir -p $(BIN)/
-	echo "qemu-system-x86_64 -drive format=raw,index=0,if=ide,file=$(BIN)/OS.bin, -m 128M" > ./run.sh
+	echo "qemu-system-x86_64 -drive format=raw,index=0,if=ide,file=$(BIN)/OS.bin,media=disk, -m 128M" > ./run.sh
 	chmod +x ./run.sh
