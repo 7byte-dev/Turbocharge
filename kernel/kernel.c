@@ -22,8 +22,15 @@ extern void main(){
         NULL,
     };
 
-    DrawTexture(ColorPallete, 1, 1, (u32)SCR_WIDTH/16, (u32)SCR_HEIGHT/16);
-    DrawChar(0x0F, FontBmps['A'], 10, 10, 3);
+    DrawTexture(ColorPallete, 0, 0, (u32)SCR_WIDTH/16, (u32)SCR_HEIGHT/16);
+
+    u8 color = 0x00;
+    while (1) {
+        color++;
+        DrawStrn(color, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 0, 0, 1, 1.2);
+        DrawStrn(color, "1234567890!@#$%^&*()_+-=`~", 0, 9, 1, 1.2);
+        for (u64 i = 0;i < U16_MAX * 1000;++i) {;}
+    }
 
     return;
 }

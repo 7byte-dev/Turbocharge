@@ -2,6 +2,10 @@
 #define __KBASIC_H
 
 #define NULL (void*)0
+#define U8_MAX 255
+#define U16_MAX 65535
+#define U32_MAX 4294967295
+#define U64_MAX 18446744073709551615
 
 /* Basic Typedefs */
 typedef unsigned char u8;
