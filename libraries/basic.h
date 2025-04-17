@@ -1,6 +1,7 @@
 #ifndef __KBASIC_H
 #define __KBASIC_H
 
+/* Basic Macros */
 #define NULL (void*)0
 #define U8_MAX 255
 #define U16_MAX 65535
@@ -18,26 +19,19 @@ typedef unsigned long long u64;
 typedef signed long long i64;
 typedef double f64;
 
-/* Basic Math 
-f64 sqrt(u64 n) {
-    u64 left = 0;
-    u64 right = n;
+/* Basic Math */
+u64 ceil(f64);
 
-    while (left <= right)
-    {
-        f64 mid = (left + right) / 2;
-        f64 midSq = mid * mid;
+/* Basic Memory Management */
+#define PAGE_SIZE 4096
+#define OMNIPAGE_START 0x100000
 
-        if (midSq == n) {
-            return mid;
-        } else if (midSq < n) {
-            left = mid + 1;
-        } else {
-            left = mid - 1;
-        }
-    }
-    
-    return right;
-}
-*/
+static u64 memmap = 0;
+
+void* kmalloc();
+void kfreemem(void*);
+
+/* Basic String Manipulation */
+void strcpy(char*,char*);
+
 #endif

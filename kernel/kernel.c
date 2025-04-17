@@ -21,9 +21,9 @@ extern void main(){
         (u8[]){0xF0, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF, NULL},
         NULL,
     };
-
-    //DrawTexture(ColorPallete, 0, 0, (u32)SCR_WIDTH/16, (u32)SCR_HEIGHT/16);
 /*
+    DrawTexture(ColorPallete, 0, 0, (u32)SCR_WIDTH/16, (u32)SCR_HEIGHT/16);
+
     u8 color = 0x00;
     while (1) {
         color++;
@@ -31,11 +31,12 @@ extern void main(){
         DrawStrn(color, "1234567890!@#$%^&*()_+-=`~", 0, 9, 1, 1.2);
         for (u64 i = 0;i < U16_MAX * 1000;++i) {;}
     }
-*/
+
     u8 key = -1;
     u8 x = 0;
     u8 cmd[256];
-    
+
+    DrawChar(0x54, '$', 0, 0, 1);
     while (!(key == KEY_ENTER)) {
         key = -1;
 
@@ -48,12 +49,27 @@ extern void main(){
             if (key == KEY_ENTER) {
                 cmd[++x] = '\0';
             }
-            DrawChar(0x1F, TranslateFromScancode(key), x * 8, 0, 1);
+            DrawChar(0x1F, TranslateFromScancode(key), x * 8 + 16, 0, 1);
             cmd[x] = TranslateFromScancode(key);
             x++;
         } while (key < 0x10 || key > 0x32);
     }
-    DrawStrn(0x1F, cmd, 0, 10, 1, 1.2);
+    DrawStrn(0x1F, cmd, 0, 10, 1, 1.2);*/
+
+    // Memory Allocation Testing
+
+    while (1) {
+        u8 * string = kmalloc();
+
+        if (string == NULL) {
+            DrawStrn(0x0C, "$FAILED TO ALLOCATE MEMORY$", 0, 0, 1, 1.2);
+        } else {
+            strcpy(string, "WIGGLE WOGGLE");
+            DrawStrn(0x1F, string, 0, 10, 1, 1.2);
+        }
+
+        kfreemem(string);
+    }
 
     return;
 }

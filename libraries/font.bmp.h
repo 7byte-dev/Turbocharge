@@ -304,7 +304,20 @@ static u8 __fontbmp_space[] = {
     0b00000000,
 };
 
+static u8 __fontbmp_$[] = {
+    0b01111111,
+    0b11011000,
+    0b11011000,
+    0b01111110,
+    0b00011011,
+    0b00011011,
+    0b00011110,
+    0b11111100,
+};
+
 u8 *FontBmps[] = {
+    ['$'] = __fontbmp_$,
+    [' '] = __fontbmp_space,
     ['A'] = __fontbmp_A,
     ['B'] = __fontbmp_B,
     ['C'] = __fontbmp_C,
@@ -331,7 +344,6 @@ u8 *FontBmps[] = {
     ['X'] = __fontbmp_X,
     ['Y'] = __fontbmp_Y,
     ['Z'] = __fontbmp_Z,
-    [' '] = __fontbmp_space,
 };
 
 void DrawChar(u8 color, u8 _char, u32 x, u32 y, u32 size) {
