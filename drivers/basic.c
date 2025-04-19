@@ -51,3 +51,12 @@ u8 streq(const char * a, const char * b) {
 
     return *a == *b;
 }
+/*
+u8 * u64tostr(u64 num) {
+    static u8 * str = kmalloc();
+
+    for (u8 i = 0;i < 64;++i) {
+        
+    }
+}
+*/
