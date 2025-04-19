@@ -26,14 +26,24 @@ u64 ceil(f64);
 #define PAGE_SIZE 4096
 #define OMNIPAGE_START 0x100000
 
+typedef struct __basic_meminf
+{
+    u64 freepages;
+    u64 occupiedpages;
+    u64 mmap;
+    u64 freemem;
+    u64 occupiedmem;
+} MemInf;
+
 static u64 memmap = 0;
 
 void* kmalloc();
 void kfreemem(void*);
+MemInf kmeminf();
 
 /* Basic String Manipulation */
 void strcpy(char*,char*);
 u8 streq(const char*,const char*);
-u8* u64tostr(u64 num);
+u8* u32tostr(u32 num);
 
 #endif

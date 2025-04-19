@@ -47,10 +47,10 @@ extern void main(){
 
     if (streq(command, "ECHO")) {
         DrawStrn(0x4F, args, 0, 10, 1, 1.2);
-    }
-
-    if (streq(command, "DIR")) {
+    } else if (streq(command, "DIR")) {
         DrawStrn(0x4F, "NOTHING HERE HAHAHAHAHA", 0, 10, 1, 1.2);
+    } else if (streq(command, "MEMINF")) {
+        DrawStrn(0x4F, u32tostr(kmeminf().mmap), 0, 10, 1, 1.2);
     }
 
     DrawStrn(0x0F, command, 0, 120, 1, 1.2);
