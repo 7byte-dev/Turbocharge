@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbocharge OS Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+</head>
+
+<body class="orbitron-400">
+    <header>
+        <div>
+            <h3>Turbocharge OS</h3>
+        </div>
+    </header>
+
+    <section class="row">
+        <h4>About Turbocharge</h4>
+        <p class="share-tech-mono-regular">I was a curious little 13-year-old, fresh out of a few C courses. I was
+            trying to make little programs with
+            C, but... the segfaults, weird compiler warnings, it was all a headache. "ALL OF THESE FRICKING OPERATING
+            SYSTEMS ARE BROKEN", I thought to myself. Then, something sparked in my brain. "What if I make an operating
+            system for myself?", I thought. Then, that little spark caused a wildfire which I like to call, Turbocharge
+            Operating System.<br></p>
+        <p class="share-tech-mono-regular">Turbocharge OS, or TCOS for short, is a rage-driven, Terry Davis-inspired,
+            x86 operating system. TCOS is yet
+            in it's early development stages, and it's still a kernel-only operating system for now. I have successfully
+            implemented a simple one-command-only shell and a very basic memory management for TCOS. I am planning on
+            implementing much more cool features and improving the current ones.</p>
+        <iframe src="https://www.youtube.com/embed/0w2f7QJ8FNo" frameborder="0" class="showcase-vid"></iframe>
+    </section>
+    <section class="row">
+        <h4>Why x86?</h4>
+        <p class="share-tech-mono-regular">I am making this operating system with a no-nonsense mindset. No useless
+            virtual memory, because why should you not know what physical address do you have? No interrupts, the OS
+            should be the overseeing god, not devices going "notice me senpai". And, as such, I think that we need no
+            further than 4GB of memory. Because I believe, with just the right amount of optimizations and sacrifices,
+            anything is possible&mdash;even cyberpunk on integrated graphics! So yeah, if you can't run Windows 11 on
+            2GB of RAM, it's microsoft's fault making it bloated, not yours for having less ram.</p>
+    </section>
+    <section class="row">
+        <h4>Turbocharge Evolution</h4>
+        <p class="share-tech-mono-regular">Turbocharge is still in it's early evolutionary stages, so there might not be
+            much to look into. BUT, that doesn't mean there aren't any history pieces to look into.</p>
+        <ul class="share-tech-mono-regular">
+            <li><strong>Late 2023 - The Humble Beginnings:</strong> This is where it all started. It was a simple
+                youtube search query of "how to make and os". Not much happened.</li>
+            <li><strong>Early-Mid 2024 - The Baby Steps:</strong> Turbocharge started taking it's first steps.
+                Bootloader was being built. Not much happened because of the motivational spikes ands falls</li>
+            <li><strong>Late 2024 - The Revolution:</strong> Started kernel development, Turbocharge got accidentally
+                deleted, restarted.</li>
+            <li><strong>2025 (current stage) - The Now:</strong> a LOT of things happened, which are just too much to
+                list here.</li>
+        </ul>
+    </section>
+    <section class="row">
+        <h4>Resources</h4>
+        <p><a href="https://github.com/7byte-dev/Turbocharge" class="link"><img src="img/github-mark-white.png" alt="github" class="github">/7byte-dev/Turbocharge</a></p>
+    </section>
+
+    <script>
+        $('section.row').hide();
+        $(document).ready(function () {
+            $('header > div > h3').addClass('TCOSHeaderTitle');
+            $('section.row').fadeIn(2500);
+        });
+    </script>
+</body>
+
+</html>
