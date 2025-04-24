@@ -1,9 +1,0 @@
-# ignore binary files
-bin/
-
-# ignore compiled drivers
-drivers/*.o
-drivers/*.a
-
-# cache
-.cache/
