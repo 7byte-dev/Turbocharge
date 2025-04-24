@@ -1,0 +1,90 @@
+/* Turbocharge OS Custom CSS */
+body {
+    background-color: #0d0221;
+}
+
+header {
+    margin: 0;
+    border: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    background-color: #541388;
+    box-shadow: 0px 0px 5px white;
+}
+
+header > div > h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    letter-spacing: 25px;
+    text-shadow: 0px 0px 5px white;
+}
+
+.TCOSHeaderTitle {
+    animation: TCOSHeaderTitleEnter 2.5s ease;
+}
+
+.orbitron-400 {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.share-tech-mono-regular {
+    font-family: "Share Tech Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5em;
+}
+  
+
+section.row {
+    padding: 50px 25px 50px 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+section.row h4 {
+    text-shadow: 0px 0px 5px white;
+    color: white;
+    letter-spacing: 2px;
+}
+
+section.row p {
+    margin-left: 10px;
+    color: white;
+}
+
+.showcase-vid {
+    width: 100%;
+    height: 100vh;
+}
+
+img.github {
+    margin-right: 5px;
+    height: 1.5em;
+}
+
+a.link {
+    display: flex;
+    align-items: center;
+}
+
+/* Animations */
+@keyframes TCOSHeaderTitleEnter {
+    from {
+        opacity: 0;
+        letter-spacing: 0;
+        text-shadow: 0px 0px 0px white;
+    }
+    to {
+        opacity: 1;
+        letter-spacing: 25px;
+        text-shadow: 0px 0px 5px white;
+    }
+}
