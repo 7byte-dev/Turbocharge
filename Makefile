@@ -1,60 +1,68 @@
-BOOTLDR=bootloader
-KERNEL=kernel
-BIN=bin
-DRIVERS=drivers
+BOOTLDR = bootloader
+DRIVERS = drivers
+KERNEL = kernel
+LIBS = libraries
+BIN = bin
 
-ASM=nasm
-CC=i386-elf-gcc
-LD=i386-elf-ld
+CC = i386-elf-gcc
+LD = i386-elf-ld
+ASM = nasm
 
-.PHONY: all bootloader drivers kernel clean ready
+CCFLAGS = -ffreestanding -m32 -g -c -Ilibraries -Idrivers
+LDFLAGS = --oformat binary
+
+.PHONY: all ready bootloader drivers kernel
 
 #
-# All
+# all
 #
 all: ready bootloader drivers kernel
-	cat $(BIN)/boot.bin $(BIN)/k.bin > $(BIN)/OS.bin
+	cat $(BIN)/boot.bin $(BIN)/k.bin > $(BIN)/tcos.img
 
 #
-# Bootloader
+# bootloader
 #
 bootloader: $(BIN)/boot.bin
 
 $(BIN)/boot.bin: $(BOOTLDR)/boot.asm
-	$(ASM) -f bin -o $(BIN)/boot.bin $(BOOTLDR)/boot.asm
+	$(ASM) -f bin -o $@ $<
 
 #
-# Drivers
+# drivers
 #
-drivers: $(DRIVERS)/*
-	cd $(DRIVERS) && sh mkdrivers.sh
+drivers: $(DRIVERS)/libdrivers.a
+
+$(DRIVERS)/libdrivers.a: $(DRIVERS)/basic.c $(DRIVERS)/graphics.c $(DRIVERS)/ide.c $(DRIVERS)/io.c $(DRIVERS)/keyboard.c $(DRIVERS)/mkdrivers.sh $(LIBS)/basic.h $(DRIVERS)/graphics.h $(DRIVERS)/ide.h $(DRIVERS)/io.h $(DRIVERS)/keyboard.h
+	cd $(DRIVERS)/ && sh mkdrivers.sh
 
 #
-# Kernel
+# kernel
 #
 kernel: $(BIN)/k.bin
 
-$(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/kmain.o
-	$(LD) -o $(BIN)/k.bin -T kernel.ld $(BIN)/kenter.o $(BIN)/kmain.o $(DRIVERS)/libdrivers.a --oformat binary
-	truncate -s 16K $(BIN)/k.bin
+$(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/k.o $(DRIVERS)/libdrivers.a
+	$(LD) -o $@ -T kernel.ld $^ $(LDFLAGS)
+
+$(BIN)/k.o: $(KERNEL)/kernel.c $(LIBS)/basic.h $(LIBS)/drivers.h $(LIBS)/font.bmp.h $(LIBS)/memory.h
+	$(CC) $(CCFLAGS) -o $@ $<
 
 $(BIN)/kenter.o: $(KERNEL)/kenter.asm
-	$(ASM) -f elf -o $(BIN)/kenter.o $(KERNEL)/kenter.asm
-
-$(BIN)/kmain.o: $(KERNEL)/kernel.c
-	$(CC) -ffreestanding -m32 -g -c -Ilibraries -Idrivers $(KERNEL)/kernel.c -o $(BIN)/kmain.o
+	$(ASM) -f elf32 -o $@ $<
 
 #
-# Clean
-clean:
-	rm -r $(BIN)/
-	rm $(DRIVERS)/*.o
-	rm $(DRIVERS)/*.a
-
-#
-# Ready
+# ready
 #
 ready:
 	mkdir -p $(BIN)/
-	echo "qemu-system-x86_64 -drive format=raw,index=0,if=ide,file=$(BIN)/OS.bin,media=disk, -m 128M" > ./run.sh
-	chmod +x ./run.sh
+
+#
+# clean
+#
+clean:
+	@{	\
+		if [ -d $(BIN)/ ]; then	\
+			rm -rfv $(BIN)/;	\
+		else	\
+			echo "Nothing to clean!";	\
+		fi	\
+	}
