@@ -484,10 +484,18 @@ void DrawChar(u8 color, u8 _char, u32 x, u32 y, u32 size) {
 
 void DrawStrn(u8 color, u8 * strn, u32 x, u32 y, u32 font_size, f64 font_spacing) {
     u64 charptr = 0;
+    u64 xptr = 0;
+    u64 yptr = 0;
 
     while (strn[charptr] != '\0') {
-        u32 xpos = (u32)(x + charptr * 8 * font_size * font_spacing);
-        DrawChar(color, strn[charptr++], xpos, 2 + y, font_size);
+        u32 xpos = (u32)(x + xptr * 8 * font_size * font_spacing);
+        if (strn[charptr] == '\n') {
+            ++yptr;
+            xptr = -1;
+        }
+
+        DrawChar(color, strn[charptr++], xpos, 2 + y + yptr * 8 * font_size * font_spacing, font_size);
+        ++xptr;
     }
 }
 

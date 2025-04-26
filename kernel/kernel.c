@@ -1,61 +1,78 @@
 #include <drivers.h>
+#include <memory.h>
 #include <font.bmp.h>
 
+u8 * memslot1 = NULL;
+
+void RunCommand(char * texbuf) {
+    u8 * texbufidx = texbuf;
+    u8 * comd = (u8*)kmemallocsz(256);
+    u8 * args = (u8*)kmemallocsz(512);
+
+    while (*texbufidx != ' ' && *texbufidx++) continue;
+    *texbufidx = '\0';
+    strcpy(comd, texbuf);
+    strcpy(args, ++texbufidx);
+
+    if (streq(comd, "ECHO")) {
+        strcpy(texbuf, args);
+    } else if (streq(comd, "MEMALLOC"))
+    {
+        if (memslot1) {
+            strcpy(texbuf, "$MEMORY ALLOCATED ALREADY$");
+        } else {
+            memslot1 = (u8*)kmemallocsz(256);
+            strcpy(texbuf, "$ATTEMPTED MEMALLOC FOR MEMSLOT1$");
+        }
+    } else if (streq(comd, "MEMPUT1")) {
+        if (memslot1) {
+            strcpy(memslot1, args);
+        } else {
+            strcpy(texbuf, "$FAILURE$ UNALLOCATED MEMORY$");
+        }
+    } else if (streq(comd, "ECHO1")) {
+        strcpy(texbuf, memslot1);
+    }
+    
+
+    kmemfreesz(comd, 256);
+    kmemfreesz(args, 512);
+}
+
 extern void main(){
-    u8 key = -1;
-    u8 cursorx = 0;
-    u8 cursory = 0;
-    u8 * textbuff = kmalloc();
-    u8 * textbuff_idx = textbuff;
-    
-    while (key != KEY_ENTER) {
-        do {
-            key = ReadKBInput();
+    u8 txbuffer[4096];
 
-            if (cursorx > 33) {
-                ++cursory;
-                cursorx = 0;
-            }
-            if (key & 0x80) continue;
-            if (key == 0x0E) {
-                // handle backspace
-                DrawRect(0x10, (u32)(--cursorx * 8 * 1.2), 0, 8, 8);
-                *textbuff_idx = '\0';
-                --textbuff_idx;
-                continue;
+    u8 kbkey = -1;
+    u8 lastkey;
+    u16 txbuffidx = 0;
+    while (1) {
+        kbkey = ReadKBInput();
+
+        if (kbkey != (u8)-1 && kbkey != lastkey) {
+            lastkey = kbkey;
+
+            u8 chr = TranslateFromScancode(kbkey);
+            if (kbkey & 0x80) continue;
+            if (kbkey == 0x1C) {
+                chr = '\n';
             }
 
-            *textbuff_idx = TranslateFromScancode(key);
-            DrawChar(0x1F, *textbuff_idx++, (u32)(cursorx++ * 8 * 1.2), cursory * 8, 1);
-        } while (key == -1);
+            if (kbkey == 0x0E && txbuffidx > 0) {
+                txbuffer[--txbuffidx] = '\0';
+            } else {
+                txbuffer[txbuffidx++] = chr;
+                txbuffer[txbuffidx] = '\0';
+            }
+
+            if (txbuffer[txbuffidx - 1] == '\n') {
+                txbuffidx = 0;
+                RunCommand(txbuffer);
+            }
+            
+            DrawRect(0xFB, 0, 0, SCR_WIDTH, SCR_HEIGHT);
+            DrawStrn(0x1F, txbuffer, 0, 0, 1, 1.2);
+        }
     }
-    *textbuff_idx = '\0';
-    
-    u8 * command = kmalloc();
-    u8 * args = kmalloc();
-    u16 texcursor = 0;
-
-    if (command == NULL || args == NULL || textbuff == NULL) {
-        DrawStrn(0x0D, "$FAILED TO ALLOCATE MEM$", 0, 0, 1, 1.2);
-    }
-
-    while (textbuff[texcursor] != ' ' && textbuff[texcursor]) texcursor++;
-    textbuff[texcursor] = '\0';
-    strcpy(command, textbuff);
-    strcpy(args, textbuff + (texcursor + 1));
-    kfreemem(textbuff);
-
-    if (streq(command, "ECHO")) {
-        DrawStrn(0x4F, args, 0, 10, 1, 1.2);
-    } else if (streq(command, "DIR")) {
-        DrawStrn(0x4F, "NOTHING HERE HAHAHAHAHA", 0, 10, 1, 1.2);
-    } else if (streq(command, "MEMINF")) {
-        DrawStrn(0x4F, u32tostr(kmeminf().mmap), 0, 10, 1, 1.2);
-    }
-
-    DrawStrn(0x0F, command, 0, 120, 1, 1.2);
-
-    DrawStrn(0x0D, "$KERNEL EXIT SUCCESS$", 0, 100, 1, 1.2);
 
     return;
 }

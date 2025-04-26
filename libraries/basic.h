@@ -22,25 +22,6 @@ typedef double f64;
 /* Basic Math */
 u64 ceil(f64);
 
-/* Basic Memory Management */
-#define PAGE_SIZE 4096
-#define OMNIPAGE_START 0x100000
-
-typedef struct __basic_meminf
-{
-    u64 freepages;
-    u64 occupiedpages;
-    u64 mmap;
-    u64 freemem;
-    u64 occupiedmem;
-} MemInf;
-
-static u64 memmap = 0;
-
-void* kmalloc();
-void kfreemem(void*);
-MemInf kmeminf();
-
 /* Basic String Manipulation */
 void strcpy(char*,char*);
 u8 streq(const char*,const char*);
