@@ -62,6 +62,7 @@ clean:
 	@{	\
 		if [ -d $(BIN)/ ]; then	\
 			rm -rfv $(BIN)/;	\
+			rm -v $(DRIVERS)/*.o $(DRIVERS)/*.a;	\
 		else	\
 			echo "Nothing to clean!";	\
 		fi	\
