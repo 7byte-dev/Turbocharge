@@ -41,15 +41,15 @@ void RunCommand(char * texbuf) {
     kmemfreesz(args, 512);
 }
 
-extern void main(){
-    EnableMouse();
-    
+extern void main(){    
     RemapPIC();
     InstallISRs();
     LoadIDT();
     
     u8 txbuffer[4096];
     
+    asm volatile ("int $0x12");
+
     i8 kbkey = -1;
     u8 lastkey;
     u16 txbuffidx = 0;

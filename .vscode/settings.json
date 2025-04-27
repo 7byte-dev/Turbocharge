@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "font.bmp.h": "c"
+        "font.bmp.h": "c",
+        "graphics.h": "c"
     }
 }
