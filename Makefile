@@ -2,6 +2,7 @@ BOOTLDR = bootloader
 DRIVERS = drivers
 KERNEL = kernel
 LIBS = libraries
+INTS = interrupts
 BIN = bin
 
 CC = i386-elf-gcc
@@ -40,7 +41,7 @@ $(DRIVERS)/libdrivers.a: $(DRIVERS)/basic.c $(DRIVERS)/graphics.c $(DRIVERS)/ide
 #
 kernel: $(BIN)/k.bin
 
-$(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/k.o $(DRIVERS)/libdrivers.a
+$(BIN)/k.bin: $(BIN)/kenter.o $(BIN)/k.o $(BIN)/isr.o $(BIN)/idt.o $(BIN)/pic.o $(BIN)/isr_stubs.o $(BIN)/idt_flush.o $(BIN)/font.o $(DRIVERS)/libdrivers.a
 	$(LD) -o $@ -T kernel.ld $^ $(LDFLAGS)
 
 $(BIN)/k.o: $(KERNEL)/kernel.c $(LIBS)/basic.h $(LIBS)/drivers.h $(LIBS)/font.bmp.h $(LIBS)/memory.h
@@ -48,6 +49,21 @@ $(BIN)/k.o: $(KERNEL)/kernel.c $(LIBS)/basic.h $(LIBS)/drivers.h $(LIBS)/font.bm
 
 $(BIN)/kenter.o: $(KERNEL)/kenter.asm
 	$(ASM) -f elf32 -o $@ $<
+
+# interrupts for the kernel
+$(BIN)/isr.o: $(INTS)/isr.c $(INTS)/isr.h
+	$(CC) $(CCFLAGS) -o $@ $<
+$(BIN)/idt.o: $(INTS)/idt.c $(INTS)/idt.h
+	$(CC) $(CCFLAGS) -o $@ $<
+$(BIN)/pic.o: $(INTS)/pic.c $(INTS)/pic.h
+	$(CC) $(CCFLAGS) -o $@ $<
+$(BIN)/idt_flush.o: $(INTS)/idt_flush.s
+	$(ASM) -f elf32 -o $@ $<
+$(BIN)/isr_stubs.o: $(INTS)/isr_stubs.s
+	$(ASM) -f elf32 -o $@ $<
+
+$(BIN)/font.o: $(LIBS)/font.c $(LIBS)/font.bmp.h
+	$(CC) $(CCFLAGS) -o $@ $<
 
 #
 # ready

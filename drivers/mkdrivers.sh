@@ -13,8 +13,9 @@ $CC -ffreestanding -m32 -c -Ilibraries keyboard.c -o keyboard.o
 $CC -ffreestanding -m32 -c -Ilibraries graphics.c -o graphics.o
 $CC -ffreestanding -m32 -c -Ilibraries ide.c -o ide.o
 $CC -ffreestanding -m32 -c -Ilibraries basic.c -o basic.o
+$CC -ffreestanding -m32 -c -Ilibraries mouse.c -o mouse.o
 
 #
 # Archive
 #
-$AR rcs libdrivers.a dummy.o io.o keyboard.o graphics.o ide.o basic.o
+$AR rcs libdrivers.a dummy.o io.o keyboard.o graphics.o ide.o basic.o mouse.o

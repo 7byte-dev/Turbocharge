@@ -5,6 +5,8 @@
 u8 * memslot1 = NULL;
 
 void RunCommand(char * texbuf) {
+
+
     u8 * texbufidx = texbuf;
     u8 * comd = (u8*)kmemallocsz(256);
     u8 * args = (u8*)kmemallocsz(512);
@@ -40,30 +42,38 @@ void RunCommand(char * texbuf) {
 }
 
 extern void main(){
+    asm volatile ("fninit");
+    
+    RemapPIC();
+    InstallISRs();
+    LoadIDT();
+    
+    asm volatile ("int $28");
+    
     u8 txbuffer[4096];
-
-    u8 kbkey = -1;
+    
+    i8 kbkey = -1;
     u8 lastkey;
     u16 txbuffidx = 0;
     while (1) {
         kbkey = ReadKBInput();
-
-        if (kbkey != (u8)-1 && kbkey != lastkey) {
+        
+        if (kbkey != -1 && kbkey != lastkey) {
             lastkey = kbkey;
-
+            
             u8 chr = TranslateFromScancode(kbkey);
             if (kbkey & 0x80) continue;
             if (kbkey == 0x1C) {
                 chr = '\n';
             }
-
+            
             if (kbkey == 0x0E && txbuffidx > 0) {
                 txbuffer[--txbuffidx] = '\0';
             } else {
                 txbuffer[txbuffidx++] = chr;
                 txbuffer[txbuffidx] = '\0';
             }
-
+            
             if (txbuffer[txbuffidx - 1] == '\n') {
                 txbuffidx = 0;
                 RunCommand(txbuffer);

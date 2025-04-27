@@ -10,9 +10,9 @@
       "dummy.o",
       "dummy.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
-    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.c",
-    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/dummy.o"
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/dummy.c",
+    "output": "/home/byte/git/Turbocharge/drivers/dummy.o"
   },
   {
     "arguments": [
@@ -25,9 +25,9 @@
       "io.o",
       "io.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
-    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.c",
-    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/io.o"
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/io.c",
+    "output": "/home/byte/git/Turbocharge/drivers/io.o"
   },
   {
     "arguments": [
@@ -40,9 +40,9 @@
       "keyboard.o",
       "keyboard.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
-    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.c",
-    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/keyboard.o"
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/keyboard.c",
+    "output": "/home/byte/git/Turbocharge/drivers/keyboard.o"
   },
   {
     "arguments": [
@@ -55,9 +55,54 @@
       "graphics.o",
       "graphics.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge/drivers",
-    "file": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.c",
-    "output": "/home/byte/Turbocharge OS/Turbocharge/drivers/graphics.o"
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/graphics.c",
+    "output": "/home/byte/git/Turbocharge/drivers/graphics.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "ide.o",
+      "ide.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/ide.c",
+    "output": "/home/byte/git/Turbocharge/drivers/ide.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "basic.o",
+      "basic.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/basic.c",
+    "output": "/home/byte/git/Turbocharge/drivers/basic.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-c",
+      "-Ilibraries",
+      "-o",
+      "mouse.o",
+      "mouse.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge/drivers",
+    "file": "/home/byte/git/Turbocharge/drivers/mouse.c",
+    "output": "/home/byte/git/Turbocharge/drivers/mouse.o"
   },
   {
     "arguments": [
@@ -69,11 +114,79 @@
       "-Ilibraries",
       "-Idrivers",
       "-o",
-      "bin/kmain.o",
+      "bin/k.o",
       "kernel/kernel.c"
     ],
-    "directory": "/home/byte/Turbocharge OS/Turbocharge",
-    "file": "/home/byte/Turbocharge OS/Turbocharge/kernel/kernel.c",
-    "output": "/home/byte/Turbocharge OS/Turbocharge/bin/kmain.o"
+    "directory": "/home/byte/git/Turbocharge",
+    "file": "/home/byte/git/Turbocharge/kernel/kernel.c",
+    "output": "/home/byte/git/Turbocharge/bin/k.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-Idrivers",
+      "-o",
+      "bin/isr.o",
+      "interrupts/isr.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge",
+    "file": "/home/byte/git/Turbocharge/interrupts/isr.c",
+    "output": "/home/byte/git/Turbocharge/bin/isr.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-Idrivers",
+      "-o",
+      "bin/idt.o",
+      "interrupts/idt.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge",
+    "file": "/home/byte/git/Turbocharge/interrupts/idt.c",
+    "output": "/home/byte/git/Turbocharge/bin/idt.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-Idrivers",
+      "-o",
+      "bin/pic.o",
+      "interrupts/pic.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge",
+    "file": "/home/byte/git/Turbocharge/interrupts/pic.c",
+    "output": "/home/byte/git/Turbocharge/bin/pic.o"
+  },
+  {
+    "arguments": [
+      "/home/byte/opt/cross/bin/i386-elf-gcc",
+      "-ffreestanding",
+      "-m32",
+      "-g",
+      "-c",
+      "-Ilibraries",
+      "-Idrivers",
+      "-o",
+      "bin/font.o",
+      "libraries/font.c"
+    ],
+    "directory": "/home/byte/git/Turbocharge",
+    "file": "/home/byte/git/Turbocharge/libraries/font.c",
+    "output": "/home/byte/git/Turbocharge/bin/font.o"
   }
 ]
