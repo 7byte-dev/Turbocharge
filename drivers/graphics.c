@@ -4,7 +4,8 @@
 
 extern void DrawPixel(u8 color, u32 x, u32 y) {
     u8 * vga = (u8*)0xA0000;
-    vga[x + 320 * y] = color;
+    u16 pos = x + SCR_WIDTH * y;
+    vga[pos] = color;
 }
 
 extern void DrawRect(u8 color, u32 x, u32 y, u32 width, u32 height) {

@@ -11,3 +11,4 @@ filesystem/mkfs.frostbyte/__pycache__/
 
 # others
 sample.frost
+dump*

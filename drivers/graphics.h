@@ -3,8 +3,8 @@
 
 #include <basic.h>
 
-#define SCR_WIDTH 320
-#define SCR_HEIGHT 200
+#define SCR_WIDTH 800
+#define SCR_HEIGHT 600
 
 extern void DrawPixel(u8,u32,u32);
 extern void DrawRect(u8,u32,u32,u32,u32);

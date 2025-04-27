@@ -23,8 +23,8 @@ mov dl, [BootDsk]
 int 0x13                
 
                                     
-mov ah, 0x0
-mov al, 0x13
+mov ax, 0x4F02
+mov bx, 0x103
 int 0x10                
 
 

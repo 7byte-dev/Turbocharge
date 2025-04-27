@@ -42,13 +42,9 @@ void RunCommand(char * texbuf) {
 }
 
 extern void main(){
-    asm volatile ("fninit");
-    
     RemapPIC();
     InstallISRs();
     LoadIDT();
-    
-    asm volatile ("int $28");
     
     u8 txbuffer[4096];
     
@@ -80,7 +76,7 @@ extern void main(){
             }
             
             DrawRect(0xFB, 0, 0, SCR_WIDTH, SCR_HEIGHT);
-            DrawStrn(0x1F, txbuffer, 0, 0, 1, 1.2);
+            DrawStrn(0x1F, txbuffer, 0, 0, 2, 1.2);
         }
     }
 
