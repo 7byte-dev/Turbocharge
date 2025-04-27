@@ -49,8 +49,7 @@ void DrawChar(u8 color, u8 _char, u32 x, u32 y, u32 size) {
             for (u32 j = 0;j < 8;j++) {
                 if (FontBmps[_char][i] >> (7 - j) & 1) {
                     u32 xpos = x + j * size;
-                    if (!(xpos > SCR_WIDTH))
-                        DrawRect(color, xpos, y + i * size, size, size);
+                    DrawRect(color, xpos, y + i * size, size, size);
                 }
             }
         }

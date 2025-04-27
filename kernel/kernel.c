@@ -42,6 +42,8 @@ void RunCommand(char * texbuf) {
 }
 
 extern void main(){
+    EnableMouse();
+    
     RemapPIC();
     InstallISRs();
     LoadIDT();

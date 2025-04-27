@@ -78,10 +78,17 @@ void InstallISRs() {
 static u16 mouse_x = 100;
 static u16 mouse_y = 100;
 
-void isr_handler(u32 err_code, u32 int_num) {
+void isr_handler(u32 int_num, u32 err_code) {
     //DrawRect(0x1F, 0, 0, 100, 100);
     DrawStrn(0x1F, u32tostr(int_num), 0, 0, 1, 1);
     
-    if (int_num == 44) {
+    if (int_num == 0x21) {         // mouse handling
+        MouseInput mi = GetMouseInput();
+
+        mouse_x += mi.xmove;
+        mouse_y -= mi.ymove;
+
+        DrawStrn(0x3F, u32tostr(mouse_x), 0, 0, 1, 1.2);
+        DrawStrn(0x3F, u32tostr(mouse_y), 0, 10, 1, 1.2);
     }
 }
