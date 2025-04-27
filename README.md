@@ -34,4 +34,4 @@ After that, you will need to build the source with `make`: ```make all```
 Now you're good to go! You can virtualize TCOS with the generated `run.sh` script! ```sh run.sh```
 
 #### Option 2: Download the binary file directly (less control, easier)
-You can download the binary pre-release from [here](https://github.com/7byte-dev/Turbocharge/releases/tag/pre) and then use any virtualization software (like `qemu`) to virtualize TCOS.
+You can download the binary release from [here](https://github.com/7byte-dev/Turbocharge/releases/tag/frost-flavor) and then use any virtualization software (like `qemu`) to virtualize TCOS.
